@@ -18,10 +18,10 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping(path = "/recipes")
-    public String getRecipes(Model model) {
+    @RequestMapping({"", "/", "/index"})
+    public String getIndexPage(Model model) {
         model.addAttribute("recipes", recipeService.findAllRecipes());
 
-        return "recipes";
+        return "index";
     }
 }
