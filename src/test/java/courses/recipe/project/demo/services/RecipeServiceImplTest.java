@@ -29,7 +29,7 @@ public class RecipeServiceImplTest {
     }
     @Test
     public void findAllRecipes() {
-        when(recipeRepository.findAll()).thenReturn(singletonList(new Recipe(1234L,singletonList(new Ingredient(1234L)))));
+        when(recipeRepository.findAll()).thenReturn(singletonList(new Recipe(1234L,singletonList(new Ingredient(1234L, "meant")))));
 
         List<Recipe> actual = classUnderTest.findAllRecipes();
 
