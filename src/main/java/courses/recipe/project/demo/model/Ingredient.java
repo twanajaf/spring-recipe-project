@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -20,6 +21,8 @@ public class Ingredient {
     private BigDecimal amount;
     @ManyToMany
     private Recipe recipe;
+    @OneToOne
+    private UnitOfMeasure unitOfMeasure;
 
     public Ingredient() {
     }
@@ -65,6 +68,14 @@ public class Ingredient {
         this.recipe = recipe;
     }
 
+    public UnitOfMeasure getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -77,13 +88,14 @@ public class Ingredient {
         return Objects.equals(id, that.id) &&
                Objects.equals(description, that.description) &&
                Objects.equals(amount, that.amount) &&
-               Objects.equals(recipe, that.recipe);
+               Objects.equals(recipe, that.recipe) &&
+               Objects.equals(unitOfMeasure, that.unitOfMeasure);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, description, amount, recipe);
+        return Objects.hash(id, description, amount, recipe, unitOfMeasure);
     }
 
     @Override
@@ -93,6 +105,7 @@ public class Ingredient {
                ", description='" + description + '\'' +
                ", amount=" + amount +
                ", recipe=" + recipe +
+               ", unitOfMeasure=" + unitOfMeasure +
                '}';
     }
 }
