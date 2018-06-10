@@ -2,6 +2,8 @@ package courses.recipe.project.demo.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,12 +31,15 @@ public class Recipe {
     private String direction;
     @Lob
     private Byte[] image;
-    //todo private Difficulty difficulty;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private List<Ingredient> ingredients = new ArrayList<>();
+
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     public Recipe() {
     }
@@ -137,6 +142,14 @@ public class Recipe {
         this.notes = notes;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -155,13 +168,14 @@ public class Recipe {
                Objects.equals(url, recipe.url) &&
                Objects.equals(direction, recipe.direction) &&
                Objects.equals(notes, recipe.notes) &&
-               Objects.equals(ingredients, recipe.ingredients);
+               Objects.equals(ingredients, recipe.ingredients) &&
+               Objects.equals(difficulty, recipe.difficulty);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, description, preparationTime, cookTime, servings, source, url, direction, notes, ingredients);
+        return Objects.hash(id, description, preparationTime, cookTime, servings, source, url, direction, notes, ingredients, difficulty);
     }
 
     @Override
