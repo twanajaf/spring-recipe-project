@@ -8,5 +8,5 @@ insert into unit_of_measure (description) values ('Tablespoon');
 insert into unit_of_measure (description) values ('Cup');
 insert into unit_of_measure (description) values ('Pinch');
 insert into unit_of_measure (description) values ('Ounce');
-insert into unit_of_measure (description) values ('Dash');
+insert into unit_of_measure (description) values ('dash');
 

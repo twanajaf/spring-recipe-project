@@ -23,8 +23,7 @@ public class UnitOfMeasure {
     @Override
     public String toString() {
         return "UnitOfMeasure{" +
-               "id=" + id +
-               ", description='" + description + '\'' +
+               "description='" + description + '\'' +
                '}';
     }
 }

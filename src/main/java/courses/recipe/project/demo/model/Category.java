@@ -64,9 +64,7 @@ public class Category {
     @Override
     public String toString() {
         return "Category{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", recipes=" + recipes +
+               "name='" + name + '\'' +
                '}';
     }
 }

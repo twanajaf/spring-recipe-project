@@ -101,10 +101,8 @@ public class Ingredient {
     @Override
     public String toString() {
         return "Ingredient{" +
-               "id=" + id +
-               ", description='" + description + '\'' +
+               "description='" + description + '\'' +
                ", amount=" + amount +
-               ", recipe=" + recipe +
                ", unitOfMeasure=" + unitOfMeasure +
                '}';
     }

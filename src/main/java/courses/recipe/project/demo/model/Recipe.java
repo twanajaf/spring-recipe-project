@@ -47,7 +47,7 @@ public class Recipe {
     @ManyToMany
     @JoinTable(name = "recipe_category", joinColumns =
                @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
 
     public Recipe() {
     }
@@ -198,9 +198,15 @@ public class Recipe {
     @Override
     public String toString() {
         return "Recipe{" +
-               "id=" + id +
-               ", description='" + description + '\'' +
-               ", ingredients=" + ingredients +
+               "description='" + description + '\'' +
+               ", preparationTime=" + preparationTime +
+               ", cookTime=" + cookTime +
+               ", servings=" + servings +
+               ", source='" + source + '\'' +
+               ", url='" + url + '\'' +
+               ", direction='" + direction + '\'' +
+               ", notes=" + notes +
+               ", categories=" + categories +
                '}';
     }
 }

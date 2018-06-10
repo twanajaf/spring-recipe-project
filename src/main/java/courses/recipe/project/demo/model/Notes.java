@@ -56,8 +56,7 @@ public class Notes {
     @Override
     public String toString() {
         return "Notes{" +
-               "recipe=" + recipe +
-               ", recipeNotes='" + recipeNotes + '\'' +
+               "recipeNotes='" + recipeNotes + '\'' +
                '}';
     }
 }
