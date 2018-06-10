@@ -7,7 +7,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.ArrayList;
@@ -40,6 +43,11 @@ public class Recipe {
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category", joinColumns =
+               @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Category category;
 
     public Recipe() {
     }
@@ -150,6 +158,14 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -169,13 +185,14 @@ public class Recipe {
                Objects.equals(direction, recipe.direction) &&
                Objects.equals(notes, recipe.notes) &&
                Objects.equals(ingredients, recipe.ingredients) &&
-               Objects.equals(difficulty, recipe.difficulty);
+               Objects.equals(difficulty, recipe.difficulty) &&
+               Objects.equals(category, recipe.category);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, description, preparationTime, cookTime, servings, source, url, direction, notes, ingredients, difficulty);
+        return Objects.hash(id, description, preparationTime, cookTime, servings, source, url, direction, notes, ingredients, difficulty, category);
     }
 
     @Override
