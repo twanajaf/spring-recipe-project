@@ -33,7 +33,7 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private List<Ingredient> ingredients = new ArrayList<>();
 
     public Recipe() {

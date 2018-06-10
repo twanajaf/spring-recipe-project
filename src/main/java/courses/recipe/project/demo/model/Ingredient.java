@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -12,20 +14,23 @@ import java.util.Objects;
 @Entity
 public class Ingredient {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String description;
+    private BigDecimal amount;
+    @ManyToMany
+    private Recipe recipe;
 
     public Ingredient() {
     }
 
-    public Ingredient(Long id, String name) {
+    public Ingredient(Long id, String description) {
         this.id = id;
-        this.name = name;
+        this.description = description;
     }
 
-    public Ingredient(String name) {
-        this.name = name;
+    public Ingredient(String description) {
+        this.description = description;
     }
 
     public Long getId() {
@@ -36,12 +41,28 @@ public class Ingredient {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
     @Override
@@ -54,20 +75,24 @@ public class Ingredient {
         }
         Ingredient that = (Ingredient) o;
         return Objects.equals(id, that.id) &&
-               Objects.equals(name, that.name);
+               Objects.equals(description, that.description) &&
+               Objects.equals(amount, that.amount) &&
+               Objects.equals(recipe, that.recipe);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name);
+        return Objects.hash(id, description, amount, recipe);
     }
 
     @Override
     public String toString() {
         return "Ingredient{" +
                "id=" + id +
-               ", name='" + name + '\'' +
+               ", description='" + description + '\'' +
+               ", amount=" + amount +
+               ", recipe=" + recipe +
                '}';
     }
 }
