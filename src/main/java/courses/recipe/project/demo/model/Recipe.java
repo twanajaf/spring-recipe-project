@@ -47,7 +47,7 @@ public class Recipe {
     @ManyToMany
     @JoinTable(name = "recipe_category", joinColumns =
                @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Category category;
+    private List<Category> categories;
 
     public Recipe() {
     }
@@ -158,12 +158,12 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     @Override
@@ -186,13 +186,13 @@ public class Recipe {
                Objects.equals(notes, recipe.notes) &&
                Objects.equals(ingredients, recipe.ingredients) &&
                Objects.equals(difficulty, recipe.difficulty) &&
-               Objects.equals(category, recipe.category);
+               Objects.equals(categories, recipe.categories);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, description, preparationTime, cookTime, servings, source, url, direction, notes, ingredients, difficulty, category);
+        return Objects.hash(id, description, preparationTime, cookTime, servings, source, url, direction, notes, ingredients, difficulty, categories);
     }
 
     @Override
