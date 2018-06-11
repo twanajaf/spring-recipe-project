@@ -10,7 +10,7 @@ public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
+    private String description = "";
 
     public String getDescription() {
         return description;
@@ -22,8 +22,6 @@ public class UnitOfMeasure {
 
     @Override
     public String toString() {
-        return "UnitOfMeasure{" +
-               "description='" + description + '\'' +
-               '}';
+        return description == null? "": description;
     }
 }

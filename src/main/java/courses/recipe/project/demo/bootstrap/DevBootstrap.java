@@ -15,16 +15,18 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Component
+@Transactional
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private static final String TABLESPOON = "Tablespoon";
     private static final String DASH = "dash";
-    private static final Optional<UnitOfMeasure> EMPTY = Optional.empty();
+    private static final String EMPTY = "";
 
     private final CategoryRepository categoryRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
@@ -73,14 +75,14 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private List<Ingredient> createIngredients(Recipe recipe) {
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(createIngredient(recipe, new BigDecimal("2"), "ripe avocados", Optional.empty()));
+        ingredients.add(createIngredient(recipe, new BigDecimal("2"), "ripe avocados", findUnitOfMeasure(EMPTY)));
         ingredients.add(createIngredient(recipe, new BigDecimal("1.5"), "Kosher salt", findUnitOfMeasure(TABLESPOON)));
         ingredients.add(createIngredient(recipe, new BigDecimal("1"), "of fresh lime juice or lemon juice", findUnitOfMeasure(TABLESPOON)));
         ingredients.add(createIngredient(recipe, new BigDecimal("2"), "cup of minced red onion or thinly sliced green onion", findUnitOfMeasure(TABLESPOON)));
-        ingredients.add(createIngredient(recipe, new BigDecimal("2"), "serrano chiles, stems and seeds removed, minced", EMPTY));
+        ingredients.add(createIngredient(recipe, new BigDecimal("2"), "serrano chiles, stems and seeds removed, minced", findUnitOfMeasure(EMPTY)));
         ingredients.add(createIngredient(recipe, new BigDecimal("2"), "cilantro (leaves and tender stems), finely chopped", findUnitOfMeasure(TABLESPOON)));
         ingredients.add(createIngredient(recipe, new BigDecimal("2"), "of freshly grated black pepper", findUnitOfMeasure(DASH)));
-        ingredients.add(createIngredient(recipe, new BigDecimal("1.5"), "ripe tomato, seeds and pulp removed, chopped", EMPTY));
+        ingredients.add(createIngredient(recipe, new BigDecimal("1.5"), "ripe tomato, seeds and pulp removed, chopped", findUnitOfMeasure(EMPTY)));
         return ingredients;
     }
 

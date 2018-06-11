@@ -50,13 +50,11 @@ public class Notes {
     @Override
     public int hashCode() {
 
-        return Objects.hash(recipe, recipeNotes);
+        return Objects.hash(recipeNotes);
     }
 
     @Override
     public String toString() {
-        return "Notes{" +
-               "recipeNotes='" + recipeNotes + '\'' +
-               '}';
+        return recipeNotes;
     }
 }

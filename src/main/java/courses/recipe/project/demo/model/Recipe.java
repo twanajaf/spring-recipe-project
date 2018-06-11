@@ -197,16 +197,14 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return "Recipe{" +
-               "description='" + description + '\'' +
-               ", preparationTime=" + preparationTime +
-               ", cookTime=" + cookTime +
-               ", servings=" + servings +
-               ", source='" + source + '\'' +
-               ", url='" + url + '\'' +
-               ", direction='" + direction + '\'' +
-               ", notes=" + notes +
-               ", categories=" + categories +
-               '}';
+        return "Description: " + description  +"\n"+
+               "Preparation time: " + preparationTime +"\n"+
+               "Cook time: " + cookTime +"\n"+
+               "Servings: " + servings +"\n"+
+               "Source"  + source  +"\n"+
+               "Source url: " + url  +"\n"+
+               "Direction: " + direction  +"\n"+
+               "Notes: " + notes +"\n"+
+               "Categories=" + categories;
     }
 }

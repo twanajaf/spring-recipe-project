@@ -95,15 +95,11 @@ public class Ingredient {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, description, amount, recipe, unitOfMeasure);
+        return Objects.hash(id, description, amount);
     }
 
     @Override
     public String toString() {
-        return "Ingredient{" +
-               "description='" + description + '\'' +
-               ", amount=" + amount +
-               ", unitOfMeasure=" + unitOfMeasure +
-               '}';
+        return amount + " " + unitOfMeasure + " " + description ;
     }
 }
