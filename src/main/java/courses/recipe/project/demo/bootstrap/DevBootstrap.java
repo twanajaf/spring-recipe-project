@@ -62,7 +62,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         recipe.setDirection("go to the website for the direction!");
 
         recipeRepository.save(recipe);
-        ingredientRepository.saveAll(recipe.getIngredients());
     }
 
     private Notes createNotes(Recipe recipe, String notes) {
