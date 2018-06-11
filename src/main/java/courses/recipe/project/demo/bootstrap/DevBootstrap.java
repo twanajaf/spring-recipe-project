@@ -7,7 +7,6 @@ import courses.recipe.project.demo.model.Notes;
 import courses.recipe.project.demo.model.Recipe;
 import courses.recipe.project.demo.model.UnitOfMeasure;
 import courses.recipe.project.demo.repositories.CategoryRepository;
-import courses.recipe.project.demo.repositories.IngredientRepository;
 import courses.recipe.project.demo.repositories.RecipeRepository;
 import courses.recipe.project.demo.repositories.UnitOfMeasureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +30,14 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private final CategoryRepository categoryRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
     private final RecipeRepository recipeRepository;
-    private final IngredientRepository ingredientRepository;
 
     @Autowired
     public DevBootstrap(CategoryRepository categoryRepository,
                         UnitOfMeasureRepository unitOfMeasureRepository,
-                        RecipeRepository recipeRepository,
-                        IngredientRepository ingredientRepository) {
+                        RecipeRepository recipeRepository) {
         this.categoryRepository = categoryRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
         this.recipeRepository = recipeRepository;
-        this.ingredientRepository = ingredientRepository;
     }
 
     @Override
