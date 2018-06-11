@@ -46,7 +46,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        Recipe recipe = createRecipe();
+        Recipe recipe = new Recipe();
         recipe.getIngredients().addAll(createIngredients(recipe));
         int preparationTime = 10;
         recipe.setPreparationTime(preparationTime);
@@ -100,12 +100,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         ingredient.setDescription(description);
         ingredient.setUnitOfMeasure(unitOfMeasure.orElse(null));
         return ingredient;
-    }
-
-    private Recipe createRecipe() {
-        Recipe recipe = new Recipe();
-        recipe.getCategories().add(createCategory("Mexican"));
-        return recipe;
     }
 
     private Category createCategory(String categoryName) {
