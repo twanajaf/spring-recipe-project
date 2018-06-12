@@ -10,6 +10,7 @@ public class RecipeFactory {
 
     public static Recipe createRecipe() {
         Recipe recipe = new Recipe();
+        recipe.setId(1L);
         recipe.getIngredients().addAll(createIngredients(recipe));
         int preparationTime = 10;
         recipe.setPreparationTime(preparationTime);

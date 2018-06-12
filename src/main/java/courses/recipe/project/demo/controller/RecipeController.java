@@ -4,11 +4,10 @@ import courses.recipe.project.demo.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * This class is used to retrieve a recipe
- */
 @Controller
 public class RecipeController {
     private final RecipeService recipeService;
@@ -18,10 +17,10 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping({"", "/", "/index"})
-    public String getIndexPage(Model model) {
-        model.addAttribute("recipes", recipeService.findAllRecipes());
+    @RequestMapping(method = RequestMethod.GET, path = "/recipe/show/{id}")
+    public String showRecipe(@PathVariable("id") Long recipeId, Model model) {
+        model.addAttribute("recipe", recipeService.findById(recipeId));
 
-        return "index";
+        return "recipe/show";
     }
 }
