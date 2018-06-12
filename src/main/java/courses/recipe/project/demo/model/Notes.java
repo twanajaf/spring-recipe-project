@@ -18,6 +18,14 @@ public class Notes {
     @Lob
     private String recipeNotes;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getRecipeNotes() {
         return recipeNotes;
     }
@@ -34,6 +42,7 @@ public class Notes {
         this.recipe = recipe;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -43,18 +52,13 @@ public class Notes {
             return false;
         }
         Notes notes = (Notes) o;
-        return Objects.equals(recipe, notes.recipe) &&
+        return Objects.equals(id, notes.id) &&
                Objects.equals(recipeNotes, notes.recipeNotes);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(recipeNotes);
-    }
-
-    @Override
-    public String toString() {
-        return recipeNotes;
+        return Objects.hash(id, recipeNotes);
     }
 }

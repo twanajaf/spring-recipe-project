@@ -20,6 +20,14 @@ public class UnitOfMeasure {
         this.description = description;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return description == null? "": description;
